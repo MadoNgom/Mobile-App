@@ -1,0 +1,7 @@
+{
+  "name": "audiolivre",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

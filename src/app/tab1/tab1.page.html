@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <div class="container">
+    <ion-row class="row">
+      <ion-searchbar placeholder="rechercher"></ion-searchbar>
+      <ion-icon
+        name="settings-sharp"
+        style="color: #fff; font-size: 1.5rem"
+      ></ion-icon>
+    </ion-row>
+
+    <ion-title class="title"
+      >Explorer le Catalogue <br />
+      AudioLivre
+    </ion-title>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <section>
+    <!-- ON PARCOURS NOS DONNEES JSON ET POUR CHAQUE ELEMENT DE NOTRE TABLEAU ON AFFICHE SES DONNEES -->
+    <ion-row class="ion-no-padding" *ngFor="let prop of data">
+      <ion-col>
+        <h2 class="section-titre">{{prop.titre}}</h2>
+      </ion-col>
+      <!-- AJOUT DE SLIDER -->
+      <swiper-container [loop]="true" [slidesPerView]="2.4" [spaceBetween]="20">
+        <swiper-slide
+          *ngFor="let livre of prop.livres;"
+          tappable
+          (click)="ouvrirLivre(livre)"
+        >
+          <div>
+            <img
+              [src]="'../../assets/images/'+ dasherize(livre.image)+'.jpeg'"
+              alt=""
+            />
+            <br />
+
+            <span>{{livre.title}}</span>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </ion-row>
+  </section>
+</ion-content>

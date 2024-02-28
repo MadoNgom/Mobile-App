@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <div class="container">
+      <ion-row class="flex">
+        <ion-searchbar placeholder="rechercher"></ion-searchbar>
+        <ion-icon
+          name="settings-sharp"
+          style="color: #fff; font-size: 1.5rem"
+        ></ion-icon>
+      </ion-row>
+    </div>
+    <div class="row flex">
+      <ion-title
+        >&quot; Lire, c'est voyager; voyager, c'est lire &quot;
+      </ion-title>
+      <ion-button class="btn" color="warning">
+        <ion-icon name="play-circle" style="color: #ffff"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-header>
+  <ion-list>
+    <!-- ON PARCOUR NOS SERVICE PUIS A CHAQUE FOIS QUE L'UTILISATEUR CLIQUE SUR UN LIVRE ON OUVRE CE LIVRE -->
+    <ion-item *ngFor="let livre of livres" (click)="onItemClick(livre.id)">
+      <ion-thumbnail
+        slot="start"
+        style="margin-right: 20px; display: block; margin-top: 10px"
+      >
+        <img
+          [src]="'../../assets/images/'+ dasherize(livre.image)+'.jpeg'"
+          alt="{{ livre.title }} Image"
+        />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ livre.title }}</h2>
+        <p>{{ livre.author }}</p>
+      </ion-label>
+      <ion-label> </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="text-chapter">
+      <ion-text>chapitre 1 : Page {{currentIndex + 1}}</ion-text>
+    </div>
+    <div class="content">
+      <div *ngIf="items" class="card">
+        <img
+          [src]="'../../assets/images/' + dasherize(items[currentIndex].image) + '.jpeg'"
+          alt=""
+          class="card-img"
+        />
+        <div>
+          <ion-card-title>{{ items[currentIndex].title }}</ion-card-title>
+          <p class="card-author">{{ items[currentIndex].author }}</p>
+        </div>
+      </div>
+      <div class="center">
+        <div class="progress-ligne">
+          <div class="progress" [style.width]="progress + '%'"></div>
+        </div>
+      </div>
+      <div class="icons">
+        <ion-icon name="heart-outline"></ion-icon>
+        <ion-icon name="cloud-download-outline"></ion-icon>
+        <ion-icon name="arrow-redo-outline"></ion-icon>
+        <ion-icon name="chatbox-outline"></ion-icon>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Control Buttons  -->
+  <ion-buttons class="btn-control">
+    <!-- QUAND ON CLIQUE SUR CE BOUTTON ON RETOURNE AU  LIVRE  PRECEDENT -->
+    <ion-button (click)="goBackAudio()">
+      <ion-icon
+        name="play-back"
+        style="color: #ffff; font-size: 3rem; cursor: pointer"
+      ></ion-icon>
+    </ion-button>
+    <!-- QUAND ON CLIQUE SUR CE BOUTTON ON PLAY OU MET EN PAUSE L'AUDIO -->
+    <ion-button (click)="playPauseAudio()">
+      <ion-icon
+        style="color: #ffff; font-size: 3rem; cursor: pointer"
+        name="{{ isPlaying ? 'pause-circle' : 'play-circle' }}"
+      ></ion-icon>
+    </ion-button>
+    <!-- QUAND ON CLIQUE SUR CE BOUTTON ON AFFICHE LE LIVRE SUIVANT -->
+    <ion-button (click)="goForwardAudio()">
+      <ion-icon
+        name="play-forward"
+        style="color: #ffff; font-size: 3rem; cursor: pointer"
+      ></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-content>
